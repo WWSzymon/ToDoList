@@ -10,9 +10,6 @@ jobs:
           name: Install dependencies
           command: python3 -m pip install --upgrade pip
       - run:
-          name: Install testing library
-          command: python3 -m pip install unittest
-      - run:
           name: Run tests
           command: python3 -m unittest discover -s . -p "test_*.py"
 
