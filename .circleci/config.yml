@@ -1,0 +1,24 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: circleci/python:3.8  # Używamy obrazu z Pythonem 3.8
+    steps:
+      - checkout  # Klonowanie repozytorium
+      - run:
+          name: Install dependencies
+          command: python3 -m pip install --upgrade pip
+      - run:
+          name: Install testing library
+          command: python3 -m pip install unittest
+      - run:
+          name: Run tests
+          command: python3 -m unittest discover -s . -p "test_*.py"
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - test
+
